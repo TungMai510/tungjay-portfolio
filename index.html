@@ -1241,5 +1241,50 @@ async function handleContactSubmit(e) {
             draw();
         }
     </script>
+    <!-- Đặt đoạn code này ở gần cuối tệp index.html, ngay phía trên thẻ </body> -->
+    <script>
+        // 1. TỰ ĐỘNG TẢI AVATAR TỪ LOCALSTORAGE KHI TRANG WEB VỪA MỞ
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedAvatar = localStorage.getItem('tungjay_avatar');
+            if (savedAvatar) {
+                const navAvatar = document.getElementById('navAvatar');
+                const previewAvatar = document.getElementById('previewAvatarImg');
+                if (navAvatar) navAvatar.src = savedAvatar;
+                if (previewAvatar) previewAvatar.src = savedAvatar;
+            }
+        });
+
+        // 2. LẮNG NGHE SỰ KIỆN KHI BẠN CHỌN ẢNH AVATAR MỚI TRONG BẢNG ADMIN
+        document.addEventListener('DOMContentLoaded', () => {
+            const avatarInput = document.getElementById('inputAvatarFile');
+            if (avatarInput) {
+                avatarInput.addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            const base64Image = e.target.result;
+                            
+                            // Cập nhật ngay hình ảnh hiển thị trên Menu
+                            const navAvatar = document.getElementById('navAvatar');
+                            if (navAvatar) navAvatar.src = base64Image;
+                            
+                            // Cập nhật ảnh xem trước (Preview) trong Bảng Admin
+                            const previewAvatar = document.getElementById('previewAvatarImg');
+                            if (previewAvatar) previewAvatar.src = base64Image;
+                            
+                            // Lưu vào LocalStorage để khi F5 không bị mất
+                            localStorage.setItem('tungjay_avatar', base64Image);
+                            
+                            alert('Đã cập nhật Avatar thành công!');
+                        };
+                        
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
