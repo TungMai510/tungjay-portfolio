@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TungJay | Music Producer - Composer - Songwriter</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#f6d365',
+                            500: '#e5b869',
+                            600: '#d4a347',
+                            700: '#b8860b',
+                        },
+                        dark: {
+                            900: '#0b0c10',
+                            800: '#121318',
+                            700: '#1a1c23',
+                            600: '#262933',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0c10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262933;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e5b869;
+        }
+
+        /* Glassmorphism effects */
+        .glass-card {
+            background: rgba(26, 28, 35, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 184, 105, 0.12);
+        }
+        
+        .glass-nav {
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #e5b869 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(229, 184, 105, 0.25);
+        }
+
+        /* Custom range input styling */
+        input[type=range] {
+            accent-color: #e5b869;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Avatar -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-gold-500/50 group-hover:border-gold-500 transition-colors shadow-lg">
+                    <img id="navAvatar" src="images/avatar.png" alt="TungJay Avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-black text-xl tracking-wider text-white group-hover:text-gold-500 transition-colors">TUNGJAY</span>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-500 font-semibold">Music Producer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="hover:text-gold-500 transition-colors py-1 border-b-2 border-transparent hover:border-gold-500">Giới thiệu</a>
+                <a href="#arrangements" class="hover:text-gold-500 transition-colors py-1 border-b-2 border-transparent hover:border-gold-500">Dự án Hoà Âm</a>
+                <a href="#originals" class="hover:text-gold-500 transition-colors py-1 border-b-2 border-transparent hover:border-gold-500">Sáng tác</a>
+                <a href="#contact" class="hover:text-gold-500 transition-colors py-1 border-b-2 border-transparent hover:border-gold-500">Liên hệ</a>
+            </nav>
+
+            <!-- Actions & Settings Button -->
+            <div class="flex items-center gap-4">
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-gold-500 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-800/95 border-b border-white/10 px-6 py-4 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 font-medium py-1">Giới thiệu</a>
+            <a href="#arrangements" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 font-medium py-1">Dự án Hoà Âm</a>
+            <a href="#originals" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 font-medium py-1">Sáng tác</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 font-medium py-1">Liên hệ</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="flex-grow pt-20">
+
+        <!-- SECTION 1: GIỚI THIỆU (HERO) -->
+        <section id="home" class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden py-16 px-4">
+            <!-- Background Visual Elements & Waveform Canvas -->
+            <div class="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(#e5b869_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+                <!-- Music Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-gold-500 text-xs sm:text-sm font-semibold tracking-wide uppercase border border-gold-500/20">
+                    <i class="fa-solid fa-compact-disc animate-spin text-sm" style="animation-duration: 6s;"></i>
+                    Official Music Portfolio
+                </div>
+
+                <!-- Main Name & Titles -->
+                <div class="space-y-4">
+                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black font-heading tracking-tight gold-gradient-text uppercase">
+                        TungJay
+                    </h1>
+                    <p class="text-lg sm:text-2xl lg:text-3xl font-medium text-gray-300 font-heading tracking-wide">
+                        Music Producer <span class="text-gold-500">/</span> Composer <span class="text-gold-500">/</span> Songwriter
+                    </p>
+                </div>
+
+                <!-- Description Text -->
+                <div class="max-w-2xl mx-auto glass-card p-6 sm:p-8 rounded-2xl shadow-2xl relative">
+                    <div class="absolute -top-3 left-8 text-gold-500 text-3xl font-serif">“</div>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+                        Tôi là một nhạc sĩ với <span class="text-gold-500 font-semibold">5 năm kinh nghiệm sáng tác</span>, <span class="text-gold-500 font-semibold">3 năm kinh nghiệm hoà âm phối khí</span>.
+                        Hiện đang theo đuổi các dòng nhạc <span class="text-white font-medium">Pop, Pop Rock, Ballad, nhạc giao hưởng Orchestra</span> và các bản nhạc <span class="text-white font-medium">Epic Version</span> cover lại từ các nhạc phim.
+                    </p>
+                </div>
+
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                    <a href="#arrangements" class="px-8 py-4 rounded-full bg-gold-500 text-black font-bold text-sm tracking-wider uppercase hover:bg-gold-400 transition-all duration-300 shadow-lg gold-glow flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i> Nghe Dự Án
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded-full bg-dark-700/80 hover:bg-dark-600 text-white font-semibold text-sm tracking-wider uppercase border border-white/10 hover:border-gold-500/50 transition-all duration-300 flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Hợp Tác
+                    </a>
+                </div>
+
+                <!-- Audio Wave Canvas Animation -->
+                <div class="pt-8 max-w-lg mx-auto">
+                    <canvas id="heroWaveform" class="w-full h-16 opacity-70"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CÁC DỰ ÁN HOÀ ÂM -->
+        <section id="arrangements" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-t border-b border-white/5">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <div class="text-gold-500 font-semibold text-sm uppercase tracking-widest mb-1">Arrangement & Production</div>
+                        <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">Các Dự Án Hoà Âm</h2>
+                    </div>
+
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 bg-dark-900/80 p-1.5 rounded-xl border border-white/10" id="arrangementFilters">
+                        <button onclick="filterArrangements('All')" class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gold-500 text-black font-semibold">Tất cả</button>
+                        <button onclick="filterArrangements('Ballad')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all">Ballad</button>
+                        <button onclick="filterArrangements('Pop Rock')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all">Pop Rock</button>
+                        <button onclick="filterArrangements('Cinematic')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all">Cinematic</button>
+                    </div>
+                </div>
+
+                <!-- Arrangement Music Player Card & Playlist Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Player Box (Left - 5 cols) -->
+                    <div class="lg:col-span-5 glass-card rounded-2xl p-6 space-y-6 sticky top-28 shadow-xl">
+                        <div class="relative aspect-square rounded-xl overflow-hidden shadow-2xl group border border-white/10">
+                            <img id="arrPlayerCover" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80" alt="Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span id="arrPlayerGenre" class="absolute top-4 left-4 bg-gold-500 text-black font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Ballad</span>
+                        </div>
+
+                        <!-- Track Info -->
+                        <div>
+                            <h3 id="arrPlayerTitle" class="text-xl font-bold text-white truncate">Chờ Em Trong Mưa (Orchestra Ver.)</h3>
+                            <p id="arrPlayerSub" class="text-sm text-gray-400 mt-1">Hoà âm phối khí: TungJay</p>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="space-y-2">
+                            <input type="range" id="arrSeekBar" value="0" min="0" max="100" class="w-full h-1.5 bg-dark-600 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                <span id="arrCurrentTime">00:00</span>
+                                <span id="arrDuration">00:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <i class="fa-solid fa-volume-high text-sm"></i>
+                                <input type="range" id="arrVolumeBar" value="80" min="0" max="100" class="w-20 h-1 bg-dark-600 rounded-lg appearance-none cursor-pointer">
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <button onclick="prevTrack('arr')" class="text-gray-300 hover:text-gold-500 transition-colors p-2 text-lg">
+                                    <i class="fa-solid fa-backward-step"></i>
+                                </button>
+                                <button id="arrPlayBtn" onclick="togglePlay('arr')" class="w-14 h-14 rounded-full bg-gold-500 hover:bg-gold-400 text-black flex items-center justify-center text-xl transition-all shadow-lg gold-glow">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <button onclick="nextTrack('arr')" class="text-gray-300 hover:text-gold-500 transition-colors p-2 text-lg">
+                                    <i class="fa-solid fa-forward-step"></i>
+                                </button>
+                            </div>
+
+                            <div class="w-12"></div><!-- Spacer for alignment -->
+                        </div>
+                    </div>
+
+                    <!-- Tracklist Table (Right - 7 cols) -->
+                    <div class="lg:col-span-7 glass-card rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <div id="arrTrackList" class="space-y-2">
+                            <!-- Populated dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BÀI HÁT TỪNG SÁNG TÁC -->
+        <section id="originals" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Section Header -->
+                <div>
+                    <div class="text-gold-500 font-semibold text-sm uppercase tracking-widest mb-1">Compositions & Songwriting</div>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">Một Số Bài Hát Từng Sáng Tác</h2>
+                </div>
+
+                <!-- Original Songs Player & Grid Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Playlist Table (Left - 7 cols) -->
+                    <div class="lg:col-span-7 glass-card rounded-2xl p-4 sm:p-6 shadow-xl order-2 lg:order-1">
+                        <div id="origTrackList" class="space-y-2">
+                            <!-- Populated dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Player Box (Right - 5 cols) -->
+                    <div class="lg:col-span-5 glass-card rounded-2xl p-6 space-y-6 sticky top-28 shadow-xl order-1 lg:order-2">
+                        <div class="relative aspect-square rounded-xl overflow-hidden shadow-2xl group border border-white/10">
+                            <img id="origPlayerCover" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80" alt="Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-gold-500 text-black font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Original Song</span>
+                        </div>
+
+                        <!-- Track Info -->
+                        <div>
+                            <h3 id="origPlayerTitle" class="text-xl font-bold text-white truncate">Thành Phố Hoàng Hôn</h3>
+                            <p id="origPlayerSub" class="text-sm text-gray-400 mt-1">Sáng tác & Lời: TungJay</p>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="space-y-2">
+                            <input type="range" id="origSeekBar" value="0" min="0" max="100" class="w-full h-1.5 bg-dark-600 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                <span id="origCurrentTime">00:00</span>
+                                <span id="origDuration">00:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                                <i class="fa-solid fa-volume-high text-sm"></i>
+                                <input type="range" id="origVolumeBar" value="80" min="0" max="100" class="w-20 h-1 bg-dark-600 rounded-lg appearance-none cursor-pointer">
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <button onclick="prevTrack('orig')" class="text-gray-300 hover:text-gold-500 transition-colors p-2 text-lg">
+                                    <i class="fa-solid fa-backward-step"></i>
+                                </button>
+                                <button id="origPlayBtn" onclick="togglePlay('orig')" class="w-14 h-14 rounded-full bg-gold-500 hover:bg-gold-400 text-black flex items-center justify-center text-xl transition-all shadow-lg gold-glow">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <button onclick="nextTrack('orig')" class="text-gray-300 hover:text-gold-500 transition-colors p-2 text-lg">
+                                    <i class="fa-solid fa-forward-step"></i>
+                                </button>
+                            </div>
+
+                            <div class="w-12"></div><!-- Spacer -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LIÊN HỆ -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-t border-white/5">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <div class="text-gold-500 font-semibold text-sm uppercase tracking-widest">Get In Touch</div>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white">Liên Hệ Hợp Tác</h2>
+                    <p class="text-gray-400 text-sm sm:text-base">Mọi yêu cầu công việc, hợp tác hoà âm phối khí hoặc sáng tác âm nhạc, vui lòng kết nối qua các kênh dưới đây.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Phone / Zalo -->
+                    <a href="tel:0972217083" class="glass-card p-8 rounded-2xl flex flex-col items-center text-center space-y-4 hover:border-gold-500/50 hover:scale-[1.02] transition-all group">
+                        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 text-2xl group-hover:bg-gold-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Điện thoại / Zalo</h3>
+                            <p class="text-gold-500 font-semibold mt-1 text-xl">0972 217 083</p>
+                            <span class="text-xs text-gray-400 mt-2 block">Tư vấn trực tiếp & Zalo Work</span>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:tungjaymusician@gmail.com" class="glass-card p-8 rounded-2xl flex flex-col items-center text-center space-y-4 hover:border-gold-500/50 hover:scale-[1.02] transition-all group">
+                        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 text-2xl group-hover:bg-gold-500 group-hover:text-black transition-all">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Email</h3>
+                            <p class="text-gold-500 font-semibold mt-1 break-all">tungjaymusician@gmail.com</p>
+                            <span class="text-xs text-gray-400 mt-2 block">Gửi demo & Hợp đồng công việc</span>
+                        </div>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/TungJayOfficial" target="_blank" rel="noopener noreferrer" class="glass-card p-8 rounded-2xl flex flex-col items-center text-center space-y-4 hover:border-gold-500/50 hover:scale-[1.02] transition-all group">
+                        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 text-2xl group-hover:bg-gold-500 group-hover:text-black transition-all">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Facebook Trang Chủ</h3>
+                            <p class="text-gold-500 font-semibold mt-1">@TungJayOfficial</p>
+                            <span class="text-xs text-gray-400 mt-2 block">Theo dõi các hoạt động âm nhạc</span>
+                        </div>
+                    </a>
+                </div>
+
+<!-- Quick Message Form -->
+<div class="max-w-2xl mx-auto glass-card p-8 rounded-2xl space-y-6">
+    <h3 class="text-xl font-bold text-white text-center">Gửi Tin Nhắn Nhanh</h3>
+    
+<form onsubmit="handleContactSubmit(event)" class="space-y-4">
+    <!-- Key Web3Forms của bạn -->
+    <input type="hidden" name="access_key" value="b27d913a-0a51-4f14-9f96-c9d25572aef3">
+    <input type="hidden" name="subject" value="Khách hàng gửi tin nhắn từ Portfolio TungJay">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input type="text" name="name" required placeholder="Họ và tên *" class="w-full bg-dark-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+        <input type="text" name="contact" required placeholder="Số điện thoại / Zalo *" class="w-full bg-dark-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+    </div>
+    
+    <textarea name="message" rows="4" required placeholder="Nội dung cần trao đổi hoặc tư vấn dự án..." class="w-full bg-dark-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500"></textarea>
+    
+    <button type="submit" class="w-full py-3.5 bg-gold-500 hover:bg-gold-400 text-black font-bold text-sm rounded-xl uppercase tracking-wider transition-colors shadow-lg gold-glow">
+        Gửi Thông Tin
+    </button>
+</form>
+</div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-900 border-t border-white/5 py-8 text-center text-xs text-gray-500 space-y-2">
+        <p>© <span id="currentYear"></span> TungJay. All rights reserved.</p>
+        <p>Music Producer • Composer • Songwriter</p>
+    </footer>
+
+    <!-- SECTION 5: SETTINGS MODAL (ADMIN CONTROL PANEL) -->
+    <div id="settingsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 space-y-6 border border-gold-500/30 relative">
+            
+            <!-- Close Button -->
+            <button onclick="toggleSettingsModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Title -->
+            <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+                <div class="p-2.5 rounded-lg bg-gold-500/10 text-gold-500">
+                    <i class="fa-solid fa-user-gear text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Bảng Quản Trị Viên (Admin Panel)</h3>
+                    <p class="text-xs text-gray-400">Phím tắt kích hoạt: <span class="text-gold-500 font-mono font-bold">Ctrl + Shift + J</span></p>
+                </div>
+            </div>
+
+            <!-- TAB CONTROLS inside Settings -->
+            <div class="flex border-b border-white/10 space-x-4 text-sm font-medium">
+                <button onclick="switchSettingsTab('avatar')" id="tabBtnAvatar" class="py-2 text-gold-500 border-b-2 border-gold-500">Logo / Avatar</button>
+                <button onclick="switchSettingsTab('arrangements')" id="tabBtnArr" class="py-2 text-gray-400 hover:text-white">Dự án Hoà Âm</button>
+                <button onclick="switchSettingsTab('originals')" id="tabBtnOrig" class="py-2 text-gray-400 hover:text-white">Bài hát Sáng tác</button>
+            </div>
+
+            <!-- SETTINGS CONTENT PANELS -->
+
+            <!-- 1. Avatar Settings -->
+            <div id="panelAvatar" class="space-y-4">
+                <p class="text-xs text-gray-300">Thay đổi icon / avatar thương hiệu hiển thị ở góc trên bên trái menu:</p>
+                <div class="flex items-center gap-6 p-4 bg-dark-900/60 rounded-xl border border-white/5">
+                    <img id="previewAvatarImg" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=150&auto=format&fit=crop&q=80" alt="Preview" class="w-16 h-16 rounded-full object-cover border-2 border-gold-500">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-semibold text-gray-300">Chọn ảnh mới (PNG/JPG):</label>
+                        <input type="file" id="inputAvatarFile" accept="image/*" class="text-xs text-gray-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-black hover:file:bg-gold-400 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Manage Arrangements -->
+            <div id="panelArrangements" class="hidden space-y-6">
+                <div class="bg-dark-900/60 p-4 rounded-xl border border-white/5 space-y-4">
+                    <h4 class="text-sm font-bold text-gold-500">Thêm Bài Hát Hoà Âm Mới</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="arrNewTitle" placeholder="Tên bài hát *" class="bg-dark-800 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                        <select id="arrNewGenre" class="bg-dark-800 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                            <option value="Ballad">Ballad</option>
+                            <option value="Pop Rock">Pop Rock</option>
+                            <option value="Cinematic">Cinematic</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block text-gray-400 mb-1">Tập tin Audio (.mp3/.wav):</label>
+                            <input type="file" id="arrNewAudio" accept="audio/*" class="w-full text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-dark-700 file:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 mb-1">Ảnh bìa bài hát:</label>
+                            <input type="file" id="arrNewCover" accept="image/*" class="w-full text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-dark-700 file:text-white">
+                        </div>
+                    </div>
+                    <button onclick="addNewTrack('arr')" class="px-4 py-2 bg-gold-500 text-black font-bold text-xs rounded-lg hover:bg-gold-400 transition-colors">
+                        <i class="fa-solid fa-plus mr-1"></i> Thêm Bài Hát
+                    </button>
+                </div>
+
+                <!-- Existing Tracklist with Delete Option -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Danh sách hiện tại:</h4>
+                    <div id="settingsArrList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Manage Original Songs -->
+            <div id="panelOriginals" class="hidden space-y-6">
+                <div class="bg-dark-900/60 p-4 rounded-xl border border-white/5 space-y-4">
+                    <h4 class="text-sm font-bold text-gold-500">Thêm Bài Hát Sáng Tác Mới</h4>
+                    <input type="text" id="origNewTitle" placeholder="Tên bài hát sáng tác *" class="w-full bg-dark-800 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block text-gray-400 mb-1">Tập tin Audio (.mp3/.wav):</label>
+                            <input type="file" id="origNewAudio" accept="audio/*" class="w-full text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-dark-700 file:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 mb-1">Ảnh bìa bài hát:</label>
+                            <input type="file" id="origNewCover" accept="image/*" class="w-full text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-dark-700 file:text-white">
+                        </div>
+                    </div>
+                    <button onclick="addNewTrack('orig')" class="px-4 py-2 bg-gold-500 text-black font-bold text-xs rounded-lg hover:bg-gold-400 transition-colors">
+                        <i class="fa-solid fa-plus mr-1"></i> Thêm Bài Hát
+                    </button>
+                </div>
+
+                <!-- Existing Tracklist with Delete Option -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Danh sách hiện tại:</h4>
+                    <div id="settingsOrigList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Save/Notice -->
+            <div class="pt-4 border-t border-white/10 flex justify-between items-center text-xs text-gray-400">
+                <span>Dữ liệu được lưu trữ tự động vào Trình duyệt.</span>
+                <button onclick="toggleSettingsModal()" class="px-4 py-2 bg-dark-700 hover:bg-dark-600 text-white rounded-lg">
+                    Đóng
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-gold-500 text-black px-5 py-3 rounded-xl font-medium shadow-2xl flex items-center gap-3 transition-all transform translate-y-4">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toastMsg">Thao tác thành công!</span>
+    </div>
+
+    <script>
+        /* ==========================================================================
+           AUDIO SYNTHESIZER GENERATOR (FOR WORKING SAMPLE AUDIO TRACKS)
+           ========================================================================== */
+        // Generates synthetic audio blob URLs so default mock songs play smoothly without external audio loading issues.
+        function createSampleTone(freq = 440, type = 'sine') {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = ctx.sampleRate;
+            const duration = 12; // 12 seconds preview
+            const numSamples = sampleRate * duration;
+            const buffer = ctx.createBuffer(1, numSamples, sampleRate);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < numSamples; i++) {
+                const t = i / sampleRate;
+                data[i] = Math.sin(2 * Math.PI * freq * t) * Math.exp(-t / 8) * 0.3;
+            }
+
+            // Convert AudioBuffer to WAV Blob
+            const wavBlob = audioBufferToWav(buffer);
+            return URL.createObjectURL(wavBlob);
+        }
+
+        function audioBufferToWav(buffer) {
+            let numOfChan = buffer.numberOfChannels,
+                length = buffer.length * numOfChan * 2 + 44,
+                out = new DataView(new ArrayBuffer(length)),
+                channels = [], i, sample,
+                offset = 0,
+                pos = 0;
+
+            function setUint16(data) { out.setUint16(pos, data, true); pos += 2; }
+            function setUint32(data) { out.setUint32(pos, data, true); pos += 4; }
+
+            setUint32(0x46464952); // "RIFF"
+            setUint32(length - 8);
+            setUint32(0x45564157); // "WAVE"
+            setUint32(0x20746d66); // "fmt "
+            setUint32(16);
+            setUint16(1); // PCM
+            setUint16(numOfChan);
+            setUint32(buffer.sampleRate);
+            setUint32(buffer.sampleRate * 2 * numOfChan);
+            setUint16(numOfChan * 2);
+            setUint16(16);
+            setUint32(0x61746164); // "data"
+            setUint32(length - pos - 4);
+
+            for(i = 0; i < buffer.numberOfChannels; i++) channels.push(buffer.getChannelData(i));
+
+            while(pos < length) {
+                for(i = 0; i < numOfChan; i++) {
+                    sample = Math.max(-1, Math.min(1, channels[i][offset]));
+                    sample = (0.5 + sample < 0 ? sample * 32768 : sample * 32767)|0;
+                    out.setInt16(pos, sample, true);
+                    pos += 2;
+                }
+                offset++;
+            }
+            return new Blob([out.buffer], {type: "audio/wav"});
+        }
+
+        /* ==========================================================================
+           INITIAL DEFAULT DATA PERSISTENCE
+           ========================================================================== */
+        const sampleAudio1 = createSampleTone(329.63); // E4
+        const sampleAudio2 = createSampleTone(261.63); // C4
+        const sampleAudio3 = createSampleTone(392.00); // G4
+
+        const defaultArrangements = [
+            {
+                id: 'arr_1',
+                title: 'Demo Beat Pop Ballad',
+                genre: 'Ballad',
+                duration: '02:15',
+                cover: 'images/Demobeat1.jpg',
+                audio: 'audio/NTTT_DemoBeat.wav'
+            },
+            {
+                id: 'arr_2',
+                title: 'Nơi Này Có Anh (Cover)',
+                genre: 'Ballad',
+                duration: '03:56',
+                cover: 'images/Noinaycoanh.jpg',
+                audio: 'audio/Noinaycoanh_demo4.mp3'
+            },
+            {
+                id: 'arr_3',
+                title: 'Your Name | Sparkle (Orchestra version)',
+                genre: 'Ballad',
+                duration: '09:42',
+                cover: 'images/Yourname.jpg',
+                audio: 'audio/Sparkle_demo1.mp3'
+            },
+            {
+                id: 'arr_4',
+                title: 'Naruto Main Theme Epic Version',
+                genre: 'Cinematic',
+                duration: '04:09',
+                cover: 'images/narutomaintheme.png',
+                audio: 'audio/Naruto_MixingFinal.mp3'
+            },
+            {
+                id: 'arr_5',
+                title: 'Naruto | Spin And Burst (Epic Version)',
+                genre: 'Pop Rock',
+                duration: '03:48',
+                cover: 'images/spinandburst.jpg',
+                audio: 'audio/Spin and Burst_mixing.wav'
+            },
+            {
+                id: 'arr_6',
+                title: 'We Are! (Epic Version)',
+                genre: 'Pop Rock',
+                duration: '03:22',
+                cover: 'images/Weare.jpg',
+                audio: 'audio/WE ARE_mixfinal.wav'
+            },
+            {
+                id: 'arr_7',
+                title: 'My Hero Academia | You Say Run (Epic Version)',
+                genre: 'Cinematic',
+                duration: '03:57',
+                cover: 'images/Yousayrun.png',
+                audio: 'audio/You Say Run_Final.wav'
+            },
+            {
+                id: 'arr_8',
+                title: 'My Hero Academia | You Can Become A Hero X Might+U (Epic Version)',
+                genre: 'Cinematic',
+                duration: '03:58',
+                cover: 'images/mightU.png',
+                audio: 'audio/MightU_Finalf.mp3'
+            },
+            {
+                id: 'arr_9',
+                title: 'Dragon Ball Kai | Dragon Soul Remake',
+                genre: 'Pop Rock',
+                duration: '03:19',
+                cover: 'images/Goku.png',
+                audio: 'audio/DragonSoul_masterFulldemo2.mp3'
+            }
+
+
+        ];
+
+        const defaultOriginals = [
+            {
+                id: 'orig_1',
+                title: 'Ngày Cuối Thu',
+                duration: '04:58',
+                cover: 'images/NCT.jpg',
+                audio: 'audio/NCT_Mix.mp3'
+            },
+            {
+                id: 'orig_2',
+                title: 'Người Tôi Từng Thương',
+                duration: '04:35',
+                cover: 'images/NTTT.jpg',
+                audio: 'audio/Người Tôi Từng Thương_Demo.mp3'
+            },            
+            {
+                id: 'orig_3',
+                title: 'Yêu Xa',
+                duration: '04:34',
+                cover: 'images/YeuXa.jpg',
+                audio: 'audio/Yêu Xa_demo.mp3'
+            },
+            {
+                id: 'orig_4',
+                title: 'Lỡ Yêu',
+                duration: '03:40',
+                cover: 'images/LoYeu.jpg',
+                audio: 'audio/Lỡ Yêu_Demo.mp3'
+            },
+            {
+                id: 'orig_5',
+                title: 'Tạm Biệt Thanh Xuân',
+                duration: '03:31',
+                cover: 'images/ThanhXuan.jpg',
+                audio: 'audio/Tạm biệt thanh xuân_vocalAi.mp3'
+            },
+            {
+                id: 'orig_6',
+                title: 'Cha Vẫn Mãi Chờ',
+                duration: '04:19',
+                cover: 'images/Cha.jpg',
+                audio: 'audio/Cha_demovocalAI1.mp3'
+            },
+            {
+                id: 'orig_7',
+                title: 'Này Bạn Thân Ơi',
+                duration: '03:14',
+                cover: 'images/Banthan.jpg',
+                audio: 'audio/Này Bạn Thân Ơi_VocalAI.mp3'
+            }
+        ];
+
+        // State Management
+        let arrangementTracks = JSON.parse(localStorage.getItem('tj_arrangements')) || defaultArrangements;
+        let originalTracks = JSON.parse(localStorage.getItem('tj_originals')) || defaultOriginals;
+        let brandAvatar = localStorage.getItem('tj_avatar') || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=150&auto=format&fit=crop&q=80';
+
+        // Audio Players Instances
+        const audioPlayers = {
+            arr: new Audio(),
+            orig: new Audio()
+        };
+
+        let currentTrackIndex = {
+            arr: 0,
+            orig: 0
+        };
+
+        let activeFilter = 'All';
+
+        /* ==========================================================================
+           PAGE INITIALIZATION
+           ========================================================================== */
+        window.onload = function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Set Avatar
+            updateAvatarDisplay(brandAvatar);
+
+            // Render Tracklists
+            renderArrangementTracklist();
+            renderOriginalTracklist();
+
+            // Render Settings Track Lists
+            renderSettingsTrackLists();
+
+            // Init Audio Visualizer
+            initHeroVisualizer();
+
+            // Setup Players Listeners
+            setupAudioPlayerListeners('arr');
+            setupAudioPlayerListeners('orig');
+
+            // Setup Avatar Upload Handler
+            document.getElementById('inputAvatarFile').addEventListener('change', handleAvatarUpload);
+
+            // KEYBOARD SHORTCUT: Ctrl + Shift + J or Cmd + Shift + J to open Settings
+            window.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+                    e.preventDefault();
+                    toggleSettingsModal();
+                    if (!document.getElementById('settingsModal').classList.contains('hidden')) {
+                        showToast('Đã mở Bảng Quản trị viên (Ctrl+Shift+J)');
+                    }
+                }
+            });
+        };
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* ==========================================================================
+           UI & RENDERING FUNCTIONS
+           ========================================================================== */
+        function updateAvatarDisplay(url) {
+            document.getElementById('navAvatar').src = url;
+            document.getElementById('previewAvatarImg').src = url;
+        }
+
+        function filterArrangements(genre) {
+            activeFilter = genre;
+            // Update button styles
+            const buttons = document.querySelectorAll('#arrangementFilters button');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim() === (genre === 'All' ? 'Tất cả' : genre)) {
+                    btn.className = 'filter-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gold-500 text-black font-semibold';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all';
+                }
+            });
+            renderArrangementTracklist();
+        }
+
+        function getFilteredArrangements() {
+            if (activeFilter === 'All') return arrangementTracks;
+            return arrangementTracks.filter(t => t.genre === activeFilter);
+        }
+
+        function renderArrangementTracklist() {
+            const filtered = getFilteredArrangements();
+            const listContainer = document.getElementById('arrTrackList');
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = `<div class="p-8 text-center text-gray-500 text-sm">Chưa có bài hát nào thuộc thể loại này.</div>`;
+                return;
+            }
+
+            listContainer.innerHTML = filtered.map((track, idx) => {
+                const isCurrent = (currentTrackIndex.arr === idx);
+                return `
+                    <div onclick="playTrack('arr', ${idx})" class="flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer ${isCurrent ? 'bg-gold-500/10 border border-gold-500/30' : 'hover:bg-white/5 border border-transparent'}">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg overflow-hidden relative flex-shrink-0">
+                                <img src="${track.cover}" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-gold-500">
+                                    <i class="fa-solid ${isCurrent && !audioPlayers.arr.paused ? 'fa-pause' : 'fa-play'} text-xs"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white ${isCurrent ? 'text-gold-500' : ''}">${track.title}</h4>
+                                <span class="text-xs text-gray-400">${track.genre}</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-400 font-mono">${track.duration}</div>
+                    </div>
+                `;
+            }).join('');
+
+            // Update player UI for current active track
+            if (filtered[currentTrackIndex.arr]) {
+                const current = filtered[currentTrackIndex.arr];
+                document.getElementById('arrPlayerTitle').textContent = current.title;
+                document.getElementById('arrPlayerGenre').textContent = current.genre;
+                document.getElementById('arrPlayerCover').src = current.cover;
+            }
+        }
+
+        function renderOriginalTracklist() {
+            const listContainer = document.getElementById('origTrackList');
+
+            if (originalTracks.length === 0) {
+                listContainer.innerHTML = `<div class="p-8 text-center text-gray-500 text-sm">Chưa có bài hát sáng tác nào.</div>`;
+                return;
+            }
+
+            listContainer.innerHTML = originalTracks.map((track, idx) => {
+                const isCurrent = (currentTrackIndex.orig === idx);
+                return `
+                    <div onclick="playTrack('orig', ${idx})" class="flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer ${isCurrent ? 'bg-gold-500/10 border border-gold-500/30' : 'hover:bg-white/5 border border-transparent'}">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg overflow-hidden relative flex-shrink-0">
+                                <img src="${track.cover}" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-gold-500">
+                                    <i class="fa-solid ${isCurrent && !audioPlayers.orig.paused ? 'fa-pause' : 'fa-play'} text-xs"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white ${isCurrent ? 'text-gold-500' : ''}">${track.title}</h4>
+                                <span class="text-xs text-gray-400">TungJay Original</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-400 font-mono">${track.duration}</div>
+                    </div>
+                `;
+            }).join('');
+
+            if (originalTracks[currentTrackIndex.orig]) {
+                const current = originalTracks[currentTrackIndex.orig];
+                document.getElementById('origPlayerTitle').textContent = current.title;
+                document.getElementById('origPlayerCover').src = current.cover;
+            }
+        }
+
+        /* ==========================================================================
+           AUDIO CONTROLLER LOGIC
+           ========================================================================== */
+        function setupAudioPlayerListeners(type) {
+            const player = audioPlayers[type];
+            const seekBar = document.getElementById(`${type}SeekBar`);
+            const volumeBar = document.getElementById(`${type}VolumeBar`);
+            const currentTimeEl = document.getElementById(`${type}CurrentTime`);
+            const durationEl = document.getElementById(`${type}Duration`);
+
+            player.ontimeupdate = () => {
+                if (player.duration) {
+                    const pct = (player.currentTime / player.duration) * 100;
+                    seekBar.value = pct;
+                    currentTimeEl.textContent = formatTime(player.currentTime);
+                    durationEl.textContent = formatTime(player.duration);
+                }
+            };
+
+            player.onended = () => {
+                nextTrack(type);
+            };
+
+            seekBar.oninput = (e) => {
+                if (player.duration) {
+                    player.currentTime = (e.target.value / 100) * player.duration;
+                }
+            };
+
+            volumeBar.oninput = (e) => {
+                player.volume = e.target.value / 100;
+            };
+        }
+
+        function playTrack(type, index) {
+            const list = type === 'arr' ? getFilteredArrangements() : originalTracks;
+            if (!list[index]) return;
+
+            // Pause other player
+            const otherType = type === 'arr' ? 'orig' : 'arr';
+            audioPlayers[otherType].pause();
+            updatePlayBtnIcon(otherType, false);
+
+            currentTrackIndex[type] = index;
+            const track = list[index];
+
+            audioPlayers[type].src = track.audio;
+            audioPlayers[type].play();
+
+            updatePlayBtnIcon(type, true);
+
+            if (type === 'arr') {
+                renderArrangementTracklist();
+            } else {
+                renderOriginalTracklist();
+            }
+        }
+
+        function togglePlay(type) {
+            const player = audioPlayers[type];
+            const list = type === 'arr' ? getFilteredArrangements() : originalTracks;
+
+            if (list.length === 0) return;
+
+            if (player.paused) {
+                if (!player.src) {
+                    playTrack(type, currentTrackIndex[type]);
+                } else {
+                    player.play();
+                    updatePlayBtnIcon(type, true);
+                }
+            } else {
+                player.pause();
+                updatePlayBtnIcon(type, false);
+            }
+
+            if (type === 'arr') renderArrangementTracklist();
+            else renderOriginalTracklist();
+        }
+
+        function prevTrack(type) {
+            const list = type === 'arr' ? getFilteredArrangements() : originalTracks;
+            if (list.length === 0) return;
+            let idx = currentTrackIndex[type] - 1;
+            if (idx < 0) idx = list.length - 1;
+            playTrack(type, idx);
+        }
+
+        function nextTrack(type) {
+            const list = type === 'arr' ? getFilteredArrangements() : originalTracks;
+            if (list.length === 0) return;
+            let idx = currentTrackIndex[type] + 1;
+            if (idx >= list.length) idx = 0;
+            playTrack(type, idx);
+        }
+
+        function updatePlayBtnIcon(type, isPlaying) {
+            const btn = document.getElementById(`${type}PlayBtn`);
+            btn.innerHTML = isPlaying ? `<i class="fa-solid fa-pause"></i>` : `<i class="fa-solid fa-play"></i>`;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        /* ==========================================================================
+           SETTINGS / ADMIN CONTROLLER & PERSISTENCE
+           ========================================================================== */
+        function toggleSettingsModal() {
+            const modal = document.getElementById('settingsModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function switchSettingsTab(tab) {
+            document.getElementById('panelAvatar').classList.add('hidden');
+            document.getElementById('panelArrangements').classList.add('hidden');
+            document.getElementById('panelOriginals').classList.add('hidden');
+
+            document.getElementById('tabBtnAvatar').className = "py-2 text-gray-400 hover:text-white";
+            document.getElementById('tabBtnArr').className = "py-2 text-gray-400 hover:text-white";
+            document.getElementById('tabBtnOrig').className = "py-2 text-gray-400 hover:text-white";
+
+            if (tab === 'avatar') {
+                document.getElementById('panelAvatar').classList.remove('hidden');
+                document.getElementById('tabBtnAvatar').className = "py-2 text-gold-500 border-b-2 border-gold-500";
+            } else if (tab === 'arrangements') {
+                document.getElementById('panelArrangements').classList.remove('hidden');
+                document.getElementById('tabBtnArr').className = "py-2 text-gold-500 border-b-2 border-gold-500";
+            } else if (tab === 'originals') {
+                document.getElementById('panelOriginals').classList.remove('hidden');
+                document.getElementById('tabBtnOrig').className = "py-2 text-gold-500 border-b-2 border-gold-500";
+            }
+        }
+
+        function handleAvatarUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    brandAvatar = evt.target.result;
+                    localStorage.setItem('tj_avatar', brandAvatar);
+                    updateAvatarDisplay(brandAvatar);
+                    showToast('Đã cập nhật logo / avatar mới thành công!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addNewTrack(type) {
+            if (type === 'arr') {
+                const title = document.getElementById('arrNewTitle').value.trim();
+                const genre = document.getElementById('arrNewGenre').value;
+                const audioFile = document.getElementById('arrNewAudio').files[0];
+                const coverFile = document.getElementById('arrNewCover').files[0];
+
+                if (!title) { alert('Vui lòng nhập tên bài hát'); return; }
+
+                const processFiles = async () => {
+                    let audioUrl = sampleAudio1;
+                    let coverUrl = 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80';
+
+                    if (audioFile) audioUrl = await readFileAsDataURL(audioFile);
+                    if (coverFile) coverUrl = await readFileAsDataURL(coverFile);
+
+                    const newTrack = {
+                        id: 'arr_' + Date.now(),
+                        title: title,
+                        genre: genre,
+                        duration: '03:30',
+                        cover: coverUrl,
+                        audio: audioUrl
+                    };
+
+                    arrangementTracks.push(newTrack);
+                    saveAndRefresh();
+                    document.getElementById('arrNewTitle').value = '';
+                    showToast('Đã thêm bài hát hoà âm mới!');
+                };
+
+                processFiles();
+            } else {
+                const title = document.getElementById('origNewTitle').value.trim();
+                const audioFile = document.getElementById('origNewAudio').files[0];
+                const coverFile = document.getElementById('origNewCover').files[0];
+
+                if (!title) { alert('Vui lòng nhập tên bài hát sáng tác'); return; }
+
+                const processFiles = async () => {
+                    let audioUrl = sampleAudio2;
+                    let coverUrl = 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80';
+
+                    if (audioFile) audioUrl = await readFileAsDataURL(audioFile);
+                    if (coverFile) coverUrl = await readFileAsDataURL(coverFile);
+
+                    const newTrack = {
+                        id: 'orig_' + Date.now(),
+                        title: title,
+                        duration: '03:45',
+                        cover: coverUrl,
+                        audio: audioUrl
+                    };
+
+                    originalTracks.push(newTrack);
+                    saveAndRefresh();
+                    document.getElementById('origNewTitle').value = '';
+                    showToast('Đã thêm bài hát sáng tác mới!');
+                };
+
+                processFiles();
+            }
+        }
+
+        function deleteTrack(type, id) {
+            if (confirm('Bạn có chắc chắn muốn xóa bài hát này?')) {
+                if (type === 'arr') {
+                    arrangementTracks = arrangementTracks.filter(t => t.id !== id);
+                } else {
+                    originalTracks = originalTracks.filter(t => t.id !== id);
+                }
+                saveAndRefresh();
+                showToast('Đã xóa bài hát thành công!');
+            }
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('tj_arrangements', JSON.stringify(arrangementTracks));
+            localStorage.setItem('tj_originals', JSON.stringify(originalTracks));
+            renderArrangementTracklist();
+            renderOriginalTracklist();
+            renderSettingsTrackLists();
+        }
+
+        function renderSettingsTrackLists() {
+            const arrBox = document.getElementById('settingsArrList');
+            const origBox = document.getElementById('settingsOrigList');
+
+            arrBox.innerHTML = arrangementTracks.map(t => `
+                <div class="flex items-center justify-between bg-dark-800 p-2 rounded-lg border border-white/5 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <img src="${t.cover}" class="w-8 h-8 rounded object-cover">
+                        <span class="text-white font-medium truncate">${t.title} (${t.genre})</span>
+                    </div>
+                    <button onclick="deleteTrack('arr', '${t.id}')" class="text-red-400 hover:text-red-300 p-1">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            origBox.innerHTML = originalTracks.map(t => `
+                <div class="flex items-center justify-between bg-dark-800 p-2 rounded-lg border border-white/5 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <img src="${t.cover}" class="w-8 h-8 rounded object-cover">
+                        <span class="text-white font-medium truncate">${t.title}</span>
+                    </div>
+                    <button onclick="deleteTrack('orig', '${t.id}')" class="text-red-400 hover:text-red-300 p-1">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function readFileAsDataURL(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            });
+        }
+
+async function handleContactSubmit(e) {
+    e.preventDefault(); // Ngăn trình duyệt load lại trang
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalBtnText = btn.innerHTML;
+
+    // Đổi trạng thái nút bấm khi đang gửi
+    btn.innerHTML = 'Đang gửi...';
+    btn.disabled = true;
+
+    try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showToast('Cảm ơn bạn! Tin nhắn đã được gửi tới TungJay.');
+            form.reset(); // Xóa nội dung trong form sau khi gửi thành công
+        } else {
+            showToast('Có lỗi xảy ra, vui lòng thử lại sau!');
+        }
+    } catch (error) {
+        showToast('Kết nối thất bại. Vui lòng kiểm tra lại mạng!');
+    } finally {
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+    }
+}
+        /* ==========================================================================
+           AUDIO WAVEFORM ANIMATION (HERO CANVAS)
+           ========================================================================== */
+        function initHeroVisualizer() {
+            const canvas = document.getElementById('heroWaveform');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = 64;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            let step = 0;
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#e5b869';
+
+                const width = canvas.width;
+                const height = canvas.height;
+                const bars = 40;
+                const barWidth = width / bars;
+
+                for (let i = 0; i < bars; i++) {
+                    const barHeight = Math.sin(step + i * 0.3) * 20 + Math.cos(step * 0.5 + i * 0.2) * 10 + 25;
+                    ctx.fillStyle = i % 2 === 0 ? '#e5b869' : '#b8860b';
+                    ctx.fillRect(i * barWidth + 2, height / 2 - barHeight / 2, barWidth - 4, barHeight);
+                }
+
+                step += 0.05;
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+    </script>
+</body>
+</html>
